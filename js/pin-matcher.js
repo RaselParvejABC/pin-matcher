@@ -67,12 +67,15 @@ document
 
     if (currentInputFieldValue === currentGeneratedPin) {
       const successElement = document.querySelector(".success-notification");
+      inputField.value = "";
+      generatedPinInputField.value = "";
       successElement.style.display = "block";
       setTimeout(function () {
         successElement.style.display = "none";
       }, 3000);
     } else {
       const failureElement = document.querySelector(".failure-notification");
+      inputField.value = "";
       failureElement.style.display = "block";
       setTimeout(function () {
         failureElement.style.display = "none";
@@ -81,6 +84,7 @@ document
     inputField.value = "";
     decreaseNumberOfTrialsLeftByOne();
     if (getNumberOfTrialsLeft() === 0) {
+      generatedPinInputField.value = "";
       this.disabled = true;
     }
   });
